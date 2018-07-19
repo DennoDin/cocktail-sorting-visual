@@ -10,7 +10,7 @@ const Jquery = require("jquery");
 // A link to our styles!
 require("./index.css");
 
-const sort = new Sort([5, 4, 3, 2, 1]);
+const sort = new Sort([6, 4, 3, 7, 5, 9, 1, 8, 2]);
 
 const button = document.getElementById("exeSort");
 button.addEventListener("click", updateHTML);
@@ -21,6 +21,10 @@ function updateHTML() {
   let three = document.getElementById("3").cloneNode();
   let four = document.getElementById("4").cloneNode();
   let five = document.getElementById("5").cloneNode();
+  let six = document.getElementById("6").cloneNode();
+  let seven = document.getElementById("7").cloneNode();
+  let eight = document.getElementById("8").cloneNode();
+  let nine = document.getElementById("9").cloneNode();
 
   const prevDiv = document.getElementById("result");
   if (prevDiv) {
@@ -41,6 +45,14 @@ function updateHTML() {
       four = newDiv.appendChild(four);
     } else if (sort.array[i] === 5) {
       five = newDiv.appendChild(five);
+    } else if (sort.array[i] === 6) {
+      six = newDiv.appendChild(six);
+    } else if (sort.array[i] === 7) {
+      seven = newDiv.appendChild(seven);
+    } else if (sort.array[i] === 8) {
+      eight = newDiv.appendChild(eight);
+    } else if (sort.array[i] === 9) {
+      nine = newDiv.appendChild(nine);
     }
   }
   document.body.appendChild(newDiv);
