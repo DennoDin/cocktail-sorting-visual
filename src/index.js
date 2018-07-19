@@ -9,7 +9,7 @@ const Sort = require("./Sort");
 // A link to our styles!
 require("./index.css");
 
-const sort = new Sort();
+const sort = new Sort([5, 4, 3, 2, 1]);
 sort.sort();
 
 function createCheesyTitle(slogan) {
@@ -19,7 +19,7 @@ function createCheesyTitle(slogan) {
   return container;
 }
 
-const title = createCheesyTitle(sort.returnValue("Re-Engineer Yourself"));
+const title = createCheesyTitle(sort.returnValue("Cocktail Sort"));
 document.getElementById("title").appendChild(title);
 
 /*
@@ -31,7 +31,7 @@ document.getElementById("title").appendChild(title);
   */
 function changeTitle(event) {
   event.preventDefault();
-  // console.log('What is an event?', event);
+  console.log("What is an event?", event);
 }
 
 const form = document.querySelector("form");
