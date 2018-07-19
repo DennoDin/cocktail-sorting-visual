@@ -61,4 +61,34 @@ describe("Sort", () => {
         .false;
     });
   });
+
+  describe("stepSort", () => {
+    beforeEach(() => {
+      largeTestTarget = [5, 12, 3, 25, 1, 7, 30, 2, 9, 10, 6, 4, 20, 15];
+      smallTestTarget = [5, 2, 1];
+
+      smallSort = new Sort(smallTestTarget);
+      largeSort = new Sort(largeTestTarget);
+    });
+    it("should be a function", () => {
+      expect(Sort.prototype.stepSort).to.be.a("function");
+    });
+
+    it("should move items one at a time, once per call", () => {
+      expect(smallSort.stepSort()).to.eql([2, 5, 1]);
+      expect(smallSort.array[0]).to.equal(2);
+      expect(smallSort.array[1]).to.equal(5);
+
+      expect(smallSort.stepSort()).to.eql([2, 1, 5]);
+
+      expect(smallSort.stepSort()).to.eql([2, 1, 5]);
+      expect(smallSort.sortRight).to.be.false;
+      expect(smallSort.array[1]).to.equal(1);
+      expect(smallSort.array[2]).to.equal(5);
+
+      expect(smallSort.stepSort()).to.eql([1, 2, 5]);
+      expect(smallSort.array[0]).to.equal(1);
+      expect(smallSort.array[1]).to.equal(2);
+    });
+  });
 });
