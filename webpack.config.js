@@ -10,4 +10,5 @@ module.exports = {
       { test: /\.(png|jpg|gif)$/, loader: "url-loader" },
     ],
   },
+  devtool: "source-map",
 };
