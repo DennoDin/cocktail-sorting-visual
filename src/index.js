@@ -5,12 +5,46 @@
 
 // How can we use require here if it's frontend? We can thank webpack.
 const Sort = require("./Sort");
+const Jquery = require("jquery");
 
 // A link to our styles!
 require("./index.css");
 
 const sort = new Sort([5, 4, 3, 2, 1]);
-sort.sort();
+
+const button = document.getElementById("exeSort");
+button.addEventListener("click", updateHTML);
+
+function updateHTML() {
+  let one = document.getElementById("1").cloneNode();
+  let two = document.getElementById("2").cloneNode();
+  let three = document.getElementById("3").cloneNode();
+  let four = document.getElementById("4").cloneNode();
+  let five = document.getElementById("5").cloneNode();
+
+  const prevDiv = document.getElementById("result");
+  if (prevDiv) {
+    prevDiv.remove();
+  }
+
+  let newDiv = document.createElement("div");
+  newDiv.setAttribute("id", "result");
+  sort.stepSort();
+  for (let i = 0; i < sort.array.length; i++) {
+    if (sort.array[i] === 1) {
+      one = newDiv.appendChild(one);
+    } else if (sort.array[i] === 2) {
+      two = newDiv.appendChild(two);
+    } else if (sort.array[i] === 3) {
+      three = newDiv.appendChild(three);
+    } else if (sort.array[i] === 4) {
+      four = newDiv.appendChild(four);
+    } else if (sort.array[i] === 5) {
+      five = newDiv.appendChild(five);
+    }
+  }
+  document.body.appendChild(newDiv);
+}
 
 function createCheesyTitle(slogan) {
   const container = document.createElement("h1");
