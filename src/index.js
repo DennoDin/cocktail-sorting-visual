@@ -10,10 +10,21 @@ const Jquery = require("jquery");
 // A link to our styles!
 require("./index.css");
 
-const sort = new Sort([6, 4, 3, 7, 5, 9, 1, 8, 2]);
+let sort = new Sort([6, 4, 3, 7, 5, 9, 1, 8, 2]);
 
 const button = document.getElementById("exeSort");
 button.addEventListener("click", updateHTML);
+
+const resetBtn = document.getElementById("resetBtn");
+resetBtn.addEventListener("click", reset);
+
+function reset() {
+  const prevDiv = document.getElementById("result");
+  if (prevDiv) {
+    prevDiv.remove();
+  }
+  sort = new Sort([6, 4, 3, 7, 5, 9, 1, 8, 2]);
+}
 
 function updateHTML() {
   let one = document.getElementById("1").cloneNode();
